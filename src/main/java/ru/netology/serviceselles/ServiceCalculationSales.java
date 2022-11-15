@@ -24,28 +24,27 @@ public class ServiceCalculationSales {
     }
 
     public double sumMidSales(long[] sales) {
-        ServiceCalculationSales serviceSumSales = new ServiceCalculationSales();
-        double sumMothsSales = serviceSumSales.sumSales(sales);
+        double sumMothsSales = sumSales(sales);
         double midSum = sumMothsSales / sales.length;
         return midSum;
     }
 
     public int maxSales(long[] sales) {
         int maxMonth = 0;
-        int month = 0; 
+        int month = 0; // переменная для индекса рассматриваемого месяца в массиве
         for (long sale : sales) {
-            
+            // sales[minMonth] - продажи в месяце minMonth
+            // sale - продажи в рассматриваемом месяце
             if (sale >= sales[maxMonth]) {
                 maxMonth = month;
             }
-            month = month + 1; 
+            month = month + 1; // следующий рассматриваемый месяц имеет номер на 1 больше
         }
         return maxMonth + 1;
     }
 
     public int monthDownMidSum(long[] sales) {
-        ServiceCalculationSales serviceSumSales = new ServiceCalculationSales();
-        double midSum = serviceSumSales.sumMidSales(sales);
+        double midSum = sumMidSales(sales);
         int sumMonth = 0;
         int month = 0;
         for (long sale : sales) {
@@ -57,8 +56,7 @@ public class ServiceCalculationSales {
     }
 
     public int monthUpMidSum(long[] sales) {
-        ServiceCalculationSales serviceSumSales = new ServiceCalculationSales();
-        double midSum = serviceSumSales.sumMidSales(sales);
+        double midSum = sumMidSales(sales);
         int sumMonth = 0;
         int month = 0;
         for (long sale : sales) {
@@ -69,5 +67,3 @@ public class ServiceCalculationSales {
         return sumMonth;
     }
 }
-
-
